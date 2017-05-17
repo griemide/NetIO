@@ -1,0 +1,59 @@
+{
+	"type": "NetIOConfiguration",
+	"version": 2,
+	"connections": [
+		{
+			"name": "TS",
+			"host": "api.thingspeak.com/",
+			"port": 443,
+			"protocol": "https"
+		}
+	],
+	"pages": [
+		{
+			"name": "266302",
+			"label": "VRC 410",
+			"connection": "TS",
+			"fitToScreen": true,
+			"items": [
+				{
+					"top": 20,
+					"left": 20,
+					"width": 260,
+					"height": 420,
+					"type": "label",
+					"text": "Channel",
+					"textcolor": "230,230,230",
+					"parseResponse": "\\d+([\\-\\+0-9]{1,})",
+					"reads": "channels/266302/fields/1?results=1",
+					"interval": 5000,
+					"formatResponse": "{0}"
+				},
+				{
+					"top": 20,
+					"left": 20,
+					"width": 200,
+					"height": 80,
+					"type": "label",
+					"text": "newLabel",
+					"textcolor": "230,230,230"
+				}
+			],
+			"width": 320,
+			"height": 480,
+			"textcolor": "230,230,230",
+			"background": "40,40,40"
+		}
+	],
+	"device": "iPhone",
+	"orientation": "portrait",
+	"name": "ThingSpeak",
+	"description": "Feasbility study using ThingSpeak channel 266302 (VRC 410)",
+	"navigation": "fix",
+	"pagebuttonwidth": "static",
+	"style": "flat",
+	"theme": "dark",
+	"preventSleep": false,
+	"switchOnSwipe": true,
+	"navBackground": "30,30,30"
+}
