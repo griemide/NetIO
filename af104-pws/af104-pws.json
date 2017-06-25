@@ -1,0 +1,132 @@
+{
+	"style": "flat",
+	"orientation": "portrait",
+	"pagebuttonwidth": "dynamic",
+	"navigation": "fix",
+	"description": "Feasbility study using af104-pws IoT device",
+	"preventSleep": false,
+	"navBackground": "30,30,30",
+	"connections": [
+		{
+			"host": "192.168.0.44",
+			"protocol": "http",
+			"name": "DEV",
+			"port": 80
+		},
+		{
+			"name": "PWS",
+			"host": "192.168.0.41",
+			"port": 80,
+			"protocol": "http"
+		}
+	],
+	"theme": "dark",
+	"version": 2,
+	"navigationalign": "center",
+	"device": "iPhone",
+	"type": "NetIOConfiguration",
+	"pages": [
+		{
+			"textcolor": "230,230,230",
+			"name": "PWS",
+			"fitToScreen": true,
+			"label": "CBM",
+			"width": 320,
+			"connection": "PWS",
+			"background": "40,40,40",
+			"items": [
+				{
+					"text": "Liter",
+					"top": 110,
+					"interval": 2500,
+					"height": 180,
+					"width": 160,
+					"reads": "/liter",
+					"fontsize": 72,
+					"parseResponse": "\\d+",
+					"textcolor": "230,230,230",
+					"type": "label",
+					"formatResponse": "{0}",
+					"left": 40
+				},
+				{
+					"text": "/liter",
+					"top": 20,
+					"interval": 2500,
+					"height": 180,
+					"width": 160,
+					"reads": "/liter",
+					"fontsize": 24,
+					"parseResponse": ".*",
+					"textcolor": "230,230,230",
+					"type": "label",
+					"formatResponse": "{0}",
+					"left": 40
+				}
+			],
+			"height": 480
+		},
+		{
+			"name": "CAL",
+			"label": "Cal",
+			"connection": "PWS",
+			"sound": "active",
+			"items": [
+				{
+					"top": 210,
+					"left": 10,
+					"width": 200,
+					"height": 30,
+					"type": "textinput",
+					"buttonColor": "45,45,45",
+					"fieldColor": "40,40,40",
+					"textColor": "230,230,230",
+					"reads": "/liter",
+					"sends": "/cal?liter={text}",
+					"requiresSendReponse": true,
+					"comment": "this is a comment",
+					"showSendButton": true,
+					"parseResponse": "\\d+",
+					"formatResponse": "{0}"
+				}
+			],
+			"fitToScreen": true,
+			"width": 320,
+			"height": 480,
+			"textcolor": "230,230,230",
+			"background": "40,40,40"
+		},
+		{
+			"name": "DEV",
+			"label": "dev",
+			"connection": "DEV",
+			"sound": "active",
+			"items": [
+				{
+					"top": 215,
+					"left": 15,
+					"width": 200,
+					"height": 30,
+					"type": "textinput",
+					"buttonColor": "45,45,45",
+					"fieldColor": "40,40,40",
+					"textColor": "230,230,230",
+					"reads": "/liter",
+					"sends": "/cal?liter={text}",
+					"requiresSendReponse": true,
+					"comment": "Dev IOT device",
+					"showSendButton": true,
+					"parseResponse": "\\d+",
+					"formatResponse": "{0}"
+				}
+			],
+			"fitToScreen": true,
+			"width": 320,
+			"height": 480,
+			"textcolor": "230,230,230",
+			"background": "40,40,40"
+		}
+	],
+	"switchOnSwipe": true,
+	"name": "af104-pws"
+}
